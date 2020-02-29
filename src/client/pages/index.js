@@ -5,10 +5,13 @@ import withAuth from "../components/withAuth";
 // following two lines for getInitialProps.
 import absoluteUrl from "next-absolute-url";
 import db from "../lib/db";
-
+import router from "next/router";
 const Home = ({ messages }) => {
-  const { firestore } = useContext(FirebaseContext);
+  const { firestore, auth } = useContext(FirebaseContext);
   const [leadMessages, setLeadMessages] = useState(messages);
+  const logout = () => {
+    auth.signOut().then(() => router.push("/signin"));
+  };
   const fetchMessages = async () => {
     const messages = [];
     try {
@@ -48,6 +51,7 @@ const Home = ({ messages }) => {
   return (
     <App>
       <p>Next.js Index Page</p>
+      <button onClick={logout}>Logout</button>
       {/* {leadMessages.map(message => (
         <p>{message.message}</p>
       ))} */}
