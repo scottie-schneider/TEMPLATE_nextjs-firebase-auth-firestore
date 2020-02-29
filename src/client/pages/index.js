@@ -52,9 +52,9 @@ const Home = ({ messages }) => {
     <App>
       <p>Next.js Index Page</p>
       <button onClick={logout}>Logout</button>
-      {/* {leadMessages.map(message => (
+      {leadMessages.map(message => (
         <p>{message.message}</p>
-      ))} */}
+      ))}
     </App>
   );
 };

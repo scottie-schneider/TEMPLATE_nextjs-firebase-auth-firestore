@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { FirebaseContext } from "../pages/_app";
 import router from "next/router";
-const withAuth = Component =>
-  function Comp(props) {
+const withAuth = Component => {
+  const Comp = props => {
     const [status, setStatus] = useState("LOADING");
     const { auth } = useContext(FirebaseContext);
     useEffect(() => {
@@ -15,6 +15,7 @@ const withAuth = Component =>
         }
       });
     }, []);
+
     if (status === "LOADING") {
       return <h1>Loading....</h1>;
     } else if (status === "SIGNED_IN") {
@@ -23,5 +24,12 @@ const withAuth = Component =>
       return <div>Yikes</div>;
     }
   };
+  Comp.getInitialProps = async ctx => {
+    const pageProps =
+      Component.getInitialProps && (await Component.getInitialProps(ctx));
+    return { ...pageProps };
+  };
+  return Comp;
+};
 
 export default withAuth;
