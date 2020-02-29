@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import App from "../components/App";
 import { FirebaseContext } from "./_app";
-
+import withAuth from "../components/withAuth";
 // following two lines for getInitialProps.
 import absoluteUrl from "next-absolute-url";
 import db from "../lib/db";
 
 const Home = ({ messages }) => {
-  const { firebase, firestore, auth } = useContext(FirebaseContext);
+  const { firestore } = useContext(FirebaseContext);
   const [leadMessages, setLeadMessages] = useState(messages);
   const fetchMessages = async () => {
     const messages = [];
@@ -48,9 +48,9 @@ const Home = ({ messages }) => {
   return (
     <App>
       <p>Next.js Index Page</p>
-      {leadMessages.map(message => (
+      {/* {leadMessages.map(message => (
         <p>{message.message}</p>
-      ))}
+      ))} */}
     </App>
   );
 };
@@ -78,4 +78,4 @@ Home.getInitialProps = async ({ req }) => {
   return { messages };
 };
 
-export default Home;
+export default withAuth(Home);

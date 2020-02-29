@@ -1,5 +1,6 @@
 import React, { createContext, useContext } from "react";
 import App from "next/app";
+import Wrapper from "../components/Wrapper";
 require("firebase/firestore");
 require("firebase/functions");
 require("firebase/storage");
@@ -21,7 +22,9 @@ export default class MyApp extends App {
       <FirebaseContext.Provider
         value={{ firebase: firebase, firestore: firestore, auth: auth }}
       >
-        <Component {...pageProps} />
+        <Wrapper>
+          <Component {...pageProps} />
+        </Wrapper>
       </FirebaseContext.Provider>
     );
   }
