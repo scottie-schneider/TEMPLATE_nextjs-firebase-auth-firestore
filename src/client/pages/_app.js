@@ -22,6 +22,11 @@ const theme = {
     width: "400px",
     height: "300px",
     padding: "20px"
+  },
+  footer: {
+    backgroundColor: "#0048aa",
+    color: "#fff",
+    height: "95px"
   }
 };
 
