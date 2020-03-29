@@ -27,6 +27,21 @@ const theme = {
     backgroundColor: "#0048aa",
     color: "#fff",
     height: "95px"
+  },
+  media: {
+    backgroundColor: "#0048aa",
+    color: "#fff",
+    maxWidth: "350px",
+    imageWidth: "48px",
+    h2: {
+      fontSize: "1.6rem",
+      color: "#fff"
+    },
+    comment: {
+      backgroundColor: "#ccddff",
+      padding: "7px",
+      color: "#131"
+    }
   }
 };
 
